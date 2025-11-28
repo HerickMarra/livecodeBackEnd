@@ -62,5 +62,9 @@ Route::post('/cpf', function (Request $request) {
         $i++;
     }
 
-    return response()->json($cpfs);
+    return response()
+    ->json($cpfs)
+    ->header('Access-Control-Allow-Origin', '*')
+    ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    ->header('Access-Control-Allow-Methods', 'POST');
 });
