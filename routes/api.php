@@ -4,6 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+Route::options('/cpf', function () {
+    return response('')
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type');
+});
+
 
 Route::post('/cpf', function (Request $request) {
 
@@ -62,9 +69,5 @@ Route::post('/cpf', function (Request $request) {
         $i++;
     }
 
-    return response()
-    ->json($cpfs)
-    ->header('Access-Control-Allow-Origin', '*')
-    ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    ->header('Access-Control-Allow-Methods', 'POST');
+    return response()->json($cpfs);
 });
